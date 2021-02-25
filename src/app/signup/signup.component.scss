@@ -1,0 +1,36 @@
+.align-icon {
+    width: 50px;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    }
+    .form-content {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .form-control {
+    background-clip: border-box;
+    }
+    }
+    button {
+    position: relative;
+    min-width: 83px;
+    &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: none;
+    }
+    &:hover {
+    &:after {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.5s ease-out;
+    }
+    }
+    }

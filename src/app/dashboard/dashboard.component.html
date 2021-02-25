@@ -1,0 +1,32 @@
+<!-- <app-top-nav></app-top-nav> -->
+<div class='container-fluid' >
+<div id="mySidebar" class="sidebar" [ngStyle] = "{'width':sidebarWidth}">
+  <a href="javascript:void(0)" class="closebtn" (click) ="closeNav()">×</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div id = 'main' [ngStyle] = "{'margin-left':mainWidth}">
+<div class='row'>
+  <div class ='col-auto'>
+    <button class="openbtn" (click) = 'openNav()' class='btn btn-primary' type='button'>☰</button>
+</div>
+<div class ='col-8'>
+  <h3 class='text-dark'>System Dashboard</h3>
+</div>
+</div>
+<div class ='container-fluid'>
+  <div><h5 class='bg-danger text-white'>My Issues</h5></div>
+  <app-data-table
+            [columns]="columns"
+            [row]="issueList"
+            [searchable]="false"
+            [pagination]="false"
+            [limit]="1000000"
+        >
+        </app-data-table>
+</div>
+</div>
+</div>

@@ -1,0 +1,53 @@
+<form class="container-fluid">
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="title">Name</label>
+      <input name="name" type="text" [(ngModel)]="project.projectName" class="form-control" id="name"
+        placeholder="Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="projectType">Project Type</label>
+      <p-dropdown placeholder="Select Project Type" name="projectType" id="projectType" [style]="{ width: '100%' }" [options]="projectTypes" [(ngModel)]="project.projectType" optionLabel="label" optionValue="label" >
+      </p-dropdown>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="assignee">Project Lead</label>
+      <p-dropdown placeholder="Select Project Lead" name="assignee" [options]='users' [style]="{ width: '100%' }" optionLabel='firstName' [(ngModel)]="project.projectLead"></p-dropdown>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Category">Project Category</label>
+      <p-dropdown placeholder="Select Project Category" name="categories" id="categories" [style]="{ width: '100%' }" [options]="categories" [(ngModel)]="project.projectCategory" optionLabel="name">
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="statuses">Issue Status</label>
+      <p-multiSelect placeholder="Select Issue Status" name="statuses" id="statuses" [style]="{ width: '100%' }" [options]="statuses" [(ngModel)]="project.issueStatusList" optionLabel="name">
+      </p-multiSelect>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Types">Issue Types</label>
+      <p-multiSelect placeholder="Select Issue Types" name="Types" [style]="{ width: '100%' }" [options]="issueTypes" [(ngModel)]="project.issueTypes" optionLabel="name">
+      </p-multiSelect>
+      {{project.issueTypes}}
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="title">Project URL</label>
+      <input type="text" class="form-control" id="url" placeholder="URL" name="url" [(ngModel)]="project.url">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+    <button type="submit" class="btn btn-primary ml-sm-5" (click)="cancel()">Cancel</button>
+  </div>
+  </div>
+  </form>
+
