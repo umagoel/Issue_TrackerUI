@@ -1,0 +1,67 @@
+<form class="container-fluid">
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="project">Project</label>
+      <p-dropdown placeholder="Select Project" name="project" id="project" [style]="{ width: '100%' }"
+        [options]="projects" [(ngModel)]="issue.project" optionLabel="projectName" >
+      </p-dropdown>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="title">Title</label>
+      <input name="title" type="text" [(ngModel)]="issue.title" class="form-control" id="title" placeholder="Name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="desc">Desc</label>
+      <input name="desc" type="text" [(ngModel)]="issue.desc" class="form-control" id="desc" placeholder="Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="dueDate">Due Date</label>
+      <p-calendar name="dueDate" id="dueDate" [showIcon]='true' [(ngModel)]="issue.dueDate" [icon]="'icon-calendar'" [style]="{ width: '100%' }"> </p-calendar>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="assignee">Assignee</label>
+      <p-dropdown placeholder="Select Assignee" name="assignee" id="assignee" [style]="{ width: '100%' }"
+        [options]="users" [(ngModel)]="issue.assignee" optionLabel="firstName" >
+      </p-dropdown>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="type">Issue Type</label>
+      <p-dropdown placeholder="Select Issue Type" name="type" id="type" [style]="{ width: '100%' }"
+        [options]="types" [(ngModel)]="issue.issueType" optionLabel="name">
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="priorities">Priority</label>
+      <p-dropdown placeholder="Select Priority" name="priorities" id="priorities" [style]="{ width: '100%' }"
+        [options]="priorities" [(ngModel)]="issue.priority" optionLabel="label" optionValue="label">
+      </p-dropdown>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="version">Fix Version</label>
+      <input name="version" type="text" [(ngModel)]="issue.fixVersion" class="form-control" id="version" placeholder="Fix Version">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-6">
+      <label for="environment">Environment</label>
+      <input name="environment" type="text" [(ngModel)]="issue.environment" class="form-control" id="environment" placeholder="Environment">
+    </div>
+    <div class="form-group col-md-6">&nbsp;
+    </div>
+  </div>
+  <div class="form-group row">
+  <div class="form-group col-auto">
+    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+  <div class="form-group col-2">
+    <button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
+  </div>
+</div>
+</form>

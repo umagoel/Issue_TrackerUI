@@ -1,0 +1,35 @@
+<div class="p-3 h-100 bg-white border mr-1">
+  <div class="mb-2 clearfix">
+      <span class="font-weight-bold h5">Filters</span> <a (click)="clearAll()" class="float-right">Clear All</a>
+  </div>
+  <ul *ngFor="let filter of filterMap" class="list-unstyled text-truncate">
+      <li class="fs-12 font-weight-bold mb-1 text-uppercase text-muted">{{ filter.name }}</li>
+      <li>
+          <ul class="list-unstyled">
+              <li *ngFor="let value of (filter.values | slice: 0:filter.visibleItem)" [title]="value">
+                  <label class="md-check text-truncate">
+                      <input
+                          #filterCheckbox
+                          (change)="onFilterSelection(filter.prop, value, $event.target.checked)"
+                          [id]= '(filter.prop + value)'
+                          type="checkbox"
+                      />
+                      <i></i> <span [class.text-primary]="filterCheckbox.checked" [innerHTML]="value || '--'"></span>
+                  </label>
+              </li>
+              <li *ngIf="filter.values.length > 3" class="text-truncate cursor-pointer">
+                  <span (click)="filter.visibleItem = 3" *ngIf="filter.visibleItem !== 3" class="text-primary">
+                      Hide
+                  </span>
+                  <span
+                      (click)="filter.visibleItem = filter.values.length"
+                      *ngIf="filter.visibleItem === 3"
+                      class="text-primary"
+                  >
+                      + {{ filter.values.length - 3 }} More
+                  </span>
+              </li>
+          </ul>
+      </li>
+  </ul>
+</div>

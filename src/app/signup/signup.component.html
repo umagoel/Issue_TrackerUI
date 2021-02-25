@@ -1,0 +1,104 @@
+<form class="form mt-5 account-form" (ngSubmit)="activate()" [formGroup]="signUpForm">
+    <div class="form-content">
+    <div class="row">
+    <div class="col-6">
+    <div class="w-100 float-left text-white mb-1" style="font-size: 14px;">First Name</div>
+    <div class="input-group">
+    <span class="input-group-prepend"><span class="input-group-text icon-admin"></span></span>
+    <input
+    type="text"
+    class="form-control font-weight-bold"
+    name="firstName"
+    id="firstName"
+    formControlName="firstName"
+    placeholder="First Name"
+    [class.is-invalid]="firstName.hasError('required') && firstName.touched"
+    appAutoFocus
+    />
+    </div>
+    </div>
+    <div class="col-6">
+    <div class="w-100 float-left text-white mb-1" style="font-size: 14px;">Last Name</div>
+    <div class="input-group h-40">
+    <span class="input-group-prepend"><span class="input-group-text icon-admin"></span></span>
+    <input
+    type="text"
+    class="form-control font-weight-bold"
+    name="lastName"
+    id="lastName"
+    formControlName="lastName"
+    placeholder="Last Name"
+    [class.is-invalid]="lastName.hasError('required') && lastName.touched"
+    />
+    </div>
+    </div>
+    </div>
+    <div class="row mt-3">
+    <div class="col-12">
+    <div class="w-100 float-left text-white mb-1" style="font-size: 14px;">Email</div>
+    <div class="input-group h-40 mt-3">
+    <span class="input-group-prepend"><span class="input-group-text fa fa-envelope-o"></span></span>
+    <input
+    type="text"
+    class="form-control font-weight-bold"
+    name="emailId"
+    id="emailId"
+    formControlName="emailId"
+    placeholder="Email"
+    [class.is-invalid]="emailId.hasError('required') && emailId.touched"
+    />
+    </div>
+    </div>
+    </div>
+    <div class="row mt-3">
+    <div class="col-6">
+    <div class="w-100 float-left text-white mb-1" style="font-size: 14px;">Password</div>
+    <div class="input-group h-40">
+    <span class="input-group-prepend"><span class="input-group-text fa fa-unlock-alt"></span></span>
+    <input
+    type="password"
+    class="form-control font-weight-bold"
+    name="password"
+    id="password"
+    formControlName="password"
+    placeholder="Password"
+    [class.is-invalid]="password.hasError('required') && password.touched"
+    (focus)="hidePasswordStrengthBar = false"
+    (blur)="hidePasswordStrengthBar = true"
+    />
+    </div>
+    </div>
+    <div class="col-6">
+    <div class="w-100 float-left text-white mb-1" style="font-size: 14px;">Confirm Password</div>
+    <div class="input-group h-40">
+    <span class="input-group-prepend"><span class="input-group-text fa fa-unlock-alt"></span></span>
+    <input
+    type="password"
+    class="form-control font-weight-bold"
+    name="confirmPassword"
+    id="confirmPassword"
+    formControlName="confirmPassword"
+    placeholder="Confirm Password"
+    [class.is-invalid]="
+    (confirmPassword.hasError('required') || confirmPassword.hasError('match')) &&
+    confirmPassword.touched
+    "
+    />
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-12">
+    </div>
+    <div class="row mt-3">
+    <div class="col-sm-12 text-left">
+    <p class="mb-0 text-white">
+    By clicking Activate, you agree to our <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+    </p>
+    </div>
+    </div>
+    <button class="btn btn-primary float-right h-40 mt-1" type="submit" [disabled]="signUpForm.invalid || loading">
+    <span *ngIf="!loading" class="auth-btn">Activate</span>
+    <span *ngIf="loading"> <i class="fa fa-refresh fa-spin"></i> </span>
+    </button>
+    </div>
+    </form>

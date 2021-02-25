@@ -1,0 +1,108 @@
+<div class="row">
+  <div [class.col-2]="showFilter" [hidden]="!showFilter" class="col-2">
+      <app-data-table-filter
+          (onFilter)="onFilter($event)"
+          [columns]="columns"
+          [defaultCheck]="defaultCheck"
+          [filterIndex]="filterIndex"
+          [row]="row"
+      ></app-data-table-filter>
+  </div>
+  <div [class.col-10]="showFilter" [class.col-12]="!showFilter">
+      <div class="row mb-2">
+          <div class="col-sm-12">
+              <div class="float-left" style="width: 250px">
+                  <div [ngStyle]="{ width: '250px' }" class="input-group">
+                      <ng-content select=".with-search"></ng-content>
+                      <button
+                          (click)="toggleFilter()"
+                          *ngIf="filter"
+                          class="table-icon text-dark mr-2 mt-1 filter-icon"
+                      >
+                          <i class="icon-interface h5 font-weight-bold"></i>
+                          <i *ngIf="appliedFilter" class="fa fa-circle text-danger"></i>
+                      </button>
+                      <ng-container *ngIf="searchable">
+                          <input
+                              (input)="onSearch($event.target.value)"
+                              placeholder="Search"
+                              appAutoFocus
+                              class="form-control"
+                              type="text"
+                          />
+                          <span class="input-group-append">
+                              <button class="btn fa fa-search" type="button"></button>
+                          </span>
+                      </ng-container>
+                  </div>
+              </div>
+              <div class="float-left">
+                  <ng-content select=".search-select"></ng-content>
+              </div>
+              <div [class.col-sm-12]="!searchable" class="float-right text-right p-0" style="margin-left:auto;">
+                  <ng-content></ng-content>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12">
+              <ngx-datatable
+                  #dataTable
+                  [columnMode]="columnMode"
+                  [columns]="columns"
+                  [cssClasses]="{
+                      sortAscending: 'fa fa-long-arrow-up',
+                      sortDescending: 'fa fa-long-arrow-down'
+                  }"
+                  [footerHeight]="40"
+                  [headerHeight]="40"
+                  [limit]="limit"
+
+                  [reorderable]="false"
+                  [rowHeight]="'auto'"
+                  [rows]="filteredRow | search: searchableString:searchableKeys"
+                  [scrollbarH]="scrollbarH"
+                  [sorts]="sorting"
+                  class="bootstrap"
+                  [class.remove-footer]="!pagination"
+              >
+                  <ngx-datatable-footer>
+                      <ng-template
+                          let-curPage="curPage"
+                          let-offset="offset"
+                          let-pageSize="pageSize"
+                          let-rowCount="rowCount"
+                          let-selectedCount="selectedCount"
+                          ngx-datatable-footer-template
+                      >
+                          <b class="ml-2">
+                              {{
+                              rowCount
+                                  ? pageSize * offset +
+                                  1 +
+                                  ' - ' +
+                                  (pageSize * curPage > rowCount ? rowCount : pageSize * curPage) +
+                                  ' of ' +
+                                  rowCount
+                                  : ''
+                              }}
+                          </b>
+                          <datatable-pager
+                              (change)="dataTable.onFooterPage($event)"
+                              [count]="rowCount"
+                              [hidden]="!(rowCount / pageSize > 1)"
+                              [page]="curPage"
+                              [pagerLeftArrowIcon]="'fa fa-angle-left'"
+                              [pagerNextIcon]="'fa fa-angle-double-right'"
+                              [pagerPreviousIcon]="'fa fa-angle-double-left'"
+                              [pagerRightArrowIcon]="'fa fa-angle-right'"
+                              [size]="pageSize"
+                          >
+                          </datatable-pager>
+                      </ng-template>
+                  </ngx-datatable-footer>
+              </ngx-datatable>
+          </div>
+      </div>
+  </div>
+</div>
