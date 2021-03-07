@@ -1,3 +1,4 @@
+import { AppStore } from './app.store';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,8 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'jira';
   rows: []
-  navVisible:Boolean= false;
+  constructor(public store: AppStore){}
+
   ngOnInit(){
-    this.navVisible = localStorage.getItem('user')!=null;
+
   }
 }

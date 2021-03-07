@@ -1,0 +1,38 @@
+<form class="container-fluid" [formGroup]="addIssueTypeForm" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+      <h5 class="modal-title text-primary">Add Issue Type</h5>
+      <button (click)="activeModal.close('Cross click')" aria-label="Close" class="close" type="button">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group required">
+          <div class="form-group row">
+              <label class="col-sm-3 col-form-label" for="issueTypeName">
+                  <span>Issue Type</span> <span class="text-danger">*</span>
+              </label>
+              <div class="col-sm-9">
+                  <input class="form-control" formControlName="name" id="issueTypeName" type="text"/>
+                  <!-- <small
+                      *ngIf="issueTypeName.hasError('required') && issueTypeName.touched"
+                      class="medium text-danger"
+                  >Required</small>
+                  <small
+                      *ngIf="issueTypeName.hasError('maxlength') && issueTypeName.touched"
+                      class="medium text-danger"
+                  >
+                      <span >Exceeds length</span>
+                      {{ issueTypeName.errors['maxlength']['actualLength'] }}
+                  </small> -->
+              </div>
+          </div>
+      </div>
+
+
+  </div>
+  <div class="modal-footer">
+      <button [disabled]="addIssueTypeForm.invalid"  class="btn btn-primary" type="submit">
+          <span class="icon-save"></span><span>Save</span>
+      </button>
+  </div>
+</form>

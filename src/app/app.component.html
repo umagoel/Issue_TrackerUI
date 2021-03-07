@@ -1,5 +1,5 @@
 
-<app-top-nav *ngIf="navVisible"></app-top-nav>
+<app-top-nav *ngIf="this.store.showDashboardNav"></app-top-nav>
 <router-outlet></router-outlet>
 <!--
 <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"

@@ -64,21 +64,21 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.signUpForm = this.fb.group(
-      {
-        firstName: [{ value: "", disable: true }, Validators.required],
-        lastName: [{ value: "", disable: true }, Validators.required],
-        emailId: new FormControl({ value: "", disable: true }, [
-          Validators.required,
-          Validators.email,
-        ]),
-        password: ["", Validators.required],
-        confirmPassword: ["", [Validators.required]],
-      },
-      {
-        // validator: PasswordValidation.Match('password', 'confirmPassword')
-      }
-    );
+    // this.signUpForm = this.fb.group(
+    //   {
+    //     firstName: [{ value: "", disable: true }, Validators.required],
+    //     lastName: [{ value: "", disable: true }, Validators.required],
+    //     emailId: new FormControl({ value: "", disable: true }, [
+    //       Validators.required,
+    //       Validators.email,
+    //     ]),
+    //     password: ["", Validators.required],
+    //     confirmPassword: ["", [Validators.required]],
+    //   },
+    //   {
+    //     // validator: PasswordValidation.Match('password', 'confirmPassword')
+    //   }
+    // );
   }
 
   public ngAfterViewInit(): void {
@@ -110,6 +110,9 @@ export class SignUpComponent implements OnInit, AfterViewInit, OnDestroy {
     // .signupFinish(keyPassword)
     // .pipe(finalize(() => (this.loading = false)))
     // .subscribe(() => this.router.navigate(['/account', 'login']));
+  }
+  public onCancel(){
+    this.router.navigate(["admin/users"])
   }
 
   public ngOnDestroy(): void {}

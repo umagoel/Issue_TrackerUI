@@ -1,3 +1,4 @@
+import { AppStore } from 'src/app/app.store';
 import { Principal } from './principal.service';
 import { AuthServerProvider } from './auth-session.service';
 import { AuthPayload } from './auth-payload';
@@ -15,7 +16,8 @@ import { Account } from './account';
 @Injectable()
 export class AccountService {
   constructor(private http: HttpClient, private router: Router ,
-     private authServerProvider: AuthServerProvider, private principal : Principal) {}
+     private authServerProvider: AuthServerProvider, private principal : Principal,
+     private store: AppStore) {}
 
   public login(credentials: AuthPayload): Promise<Account> {
     return new Promise((resolve, reject) => {
@@ -42,7 +44,7 @@ export class AccountService {
       // }
       this.principal.authenticate(null);
       this.http.get('/api/account').subscribe(()=>console.log(''))
-      localStorage.removeItem('user');
+      this.store.updateStore('showDashboardNav', false)
       this.router.navigate([ "login"]);
     });
   }

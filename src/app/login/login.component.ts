@@ -1,3 +1,4 @@
+import { AppStore } from 'src/app/app.store';
 import { Router } from '@angular/router';
 import { AccountService } from './../account.service';
 import { AuthService } from './../auth.service';
@@ -15,10 +16,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   errorMessage: string
 
-  constructor(private authService: AuthService, private accountService: AccountService , private router: Router) { }
+  constructor(private store: AppStore, private authService: AuthService, private accountService: AccountService , private router: Router) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('user')){
+    if(this.store.showDashboardNav){
       this.router.navigate(['dashboard']);
     }
     this.loginForm = new FormGroup({
@@ -28,10 +29,8 @@ export class LoginComponent implements OnInit {
   }
   submit(event):void{
     this.accountService.login(this.loginForm.value).then((data)=>{
-      console.log(data);
-
+      this.store.updateStore('showDashboardNav', true);
       this.router.navigate(['dashboard']);
-      localStorage.setItem('user', data.user.emailId);
       // localStorage.setItem
     })
     .catch(error=>{
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit {
     }
     );
 
-    console.log('submit called');
 
   }
 
