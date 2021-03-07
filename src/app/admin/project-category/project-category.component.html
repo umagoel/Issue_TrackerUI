@@ -1,0 +1,18 @@
+<div class='container-fluid' >
+  <h3 class='text-dark'>Project Cayegory</h3>
+<div class ='container-fluid'>
+  <app-data-table
+            [columns]="columns"
+            [row]="projectCategory"
+            [searchable]="false"
+            [pagination]="false"
+            [limit]="1000000"
+        >
+        <button
+        class="btn btn-primary float-right" (click)="addCategory()"
+    >
+        <span class="icon-add2"></span> Add Category
+    </button>
+        </app-data-table>
+</div>
+</div>

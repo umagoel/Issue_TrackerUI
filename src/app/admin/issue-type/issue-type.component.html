@@ -1,0 +1,23 @@
+<div class='container-fluid' >
+  <h3 class='text-dark'>Issue Type</h3>
+<div class ='container-fluid'>
+  <app-data-table
+            [columns]="columns"
+            [row]="issueTypeList"
+            [searchable]="false"
+            [pagination]="false"
+            [limit]="1000000"
+        >
+        <button
+        class="btn btn-primary float-right" (click)="addIssueType()"
+    >
+        <span class="icon-add2"></span> Add Issue Type
+    </button>
+        </app-data-table>
+</div>
+</div>
+<!--
+<ng-template #action let-row="row">
+<button (click)="editProject(row)" class="table-icon text-dark"><span class="icon-edit"></span></button>
+</ng-template> -->
+

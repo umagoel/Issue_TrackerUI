@@ -1,0 +1,13 @@
+<div>
+  <div class="row">
+    <div class="col-2">
+      <div id="mySidebar" class="sidebar mt-5" style="width: 16%">
+        <a (click)="this.router.navigate(['/admin/issue-type'])">Issue Type</a>
+        <a (click)="this.router.navigate(['/admin/issue-status'])">Issue Status</a>
+        <a (click)="this.router.navigate(['/admin/project-category'])">Project Category</a>
+        <a (click)="this.router.navigate(['/admin/users'])">Users</a>
+      </div>
+    </div>
+    <div class="col-10"><router-outlet></router-outlet></div>
+  </div>
+</div>
